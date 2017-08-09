@@ -1,3 +1,6 @@
 Rails.application.routes.draw do
-  root to: 'visitors#index'
+
+  resources :feeds, except: [:edit, :update]
+
+  root to: 'feeds#index'
 end
