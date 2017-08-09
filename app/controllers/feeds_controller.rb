@@ -18,14 +18,18 @@ class FeedsController < ApplicationController
   end
 
   def show
-    @feed = Feed.find(params[:id])
+    @feed = current_user.feeds.find(params[:id])
   end
 
   def destroy
-    @feed = Feed.find(params[:id])
+    @feed = current_user.feeds.find(params[:id])
     @feed.destroy
 
     redirect_to feeds_path, notice: 'Feed successfully deleted.'
+  end
+
+  def fetch
+
   end
 
 private

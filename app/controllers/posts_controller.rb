@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
   def index
-    @feed = Feed.find(params[:feed_id])
+    @feed = current_user.feeds.find(params[:feed_id])
   end
 end
