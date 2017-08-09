@@ -1,4 +1,11 @@
 <tr>
   <td><%= post.title %></td>
   <td><%= post.content.truncate(200) %></td>
+  <td>
+    <% if post.audio_url.present? %>
+      <audio controls>
+        <source src="<%= post.audio_url %>" type="audio/mpeg">
+      </audio>
+    <% end %>
+  </td>
 </tr>
