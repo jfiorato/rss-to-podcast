@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-lg-12 text-center">
+    <h1>Posts for feed <%= @feed.url %></h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-12">
+    <%= link_to "<- Back to feeds", feeds_path %>
+    <% if @feed.posts.length > 0 %>
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Post Title</th>
+            <th>Post Content</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @feed.posts.each do |post| %>
+            <%= render post %>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <div class="well">
+        Feed has no posts.
+      </div>
+    <% end %>
+  </div>
+</div>

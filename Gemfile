@@ -9,6 +9,8 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'puma'
 gem 'sidekiq'
+gem 'figaro'
+gem 'feedjira'
 group :development, :test do
   gem 'byebug'
 end
