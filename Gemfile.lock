@@ -80,7 +80,6 @@ GEM
     ffi (1.9.18)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
-    high_voltage (3.0.0)
     hub (1.12.4)
     i18n (0.8.6)
     jbuilder (2.7.0)
@@ -191,7 +190,6 @@ DEPENDENCIES
   capistrano-rails-console
   capistrano-rvm (~> 0.1.1)
   coffee-rails (~> 4.1.0)
-  high_voltage
   hub
   jbuilder (~> 2.0)
   jquery-rails

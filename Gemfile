@@ -16,7 +16,6 @@ group :development do
   gem 'spring'
 end
 gem 'bootstrap-sass'
-gem 'high_voltage'
 gem 'mysql2', '~> 0.3.18'
 group :development do
   gem 'better_errors'
