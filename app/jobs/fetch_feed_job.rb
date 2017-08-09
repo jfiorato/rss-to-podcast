@@ -22,7 +22,12 @@ class FetchFeedJob < ActiveJob::Base
   end
 
   def process_content(entry)
-    content = entry.content.strip.blank? ? entry.summary : entry.content
+    if entry.content.to_s.strip.blank?
+      content = entry.summary.to_s.strip
+    else
+      content = entry.content.to_s.strip
+    end
+
     Nokogiri::HTML(content).text
   end
 end

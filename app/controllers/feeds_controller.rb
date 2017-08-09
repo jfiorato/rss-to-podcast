@@ -29,7 +29,10 @@ class FeedsController < ApplicationController
   end
 
   def fetch
+    feed = current_user.feeds.find(params[:id])
+    FetchFeedJob.perform_later feed.id
 
+    redirect_to feeds_path, notice: 'Feed is scheduled to be fetched.'
   end
 
 private
