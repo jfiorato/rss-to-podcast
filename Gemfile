@@ -11,6 +11,7 @@ gem 'puma'
 gem 'sidekiq'
 gem 'figaro'
 gem 'feedjira'
+gem 'aws-sdk'
 group :development, :test do
   gem 'byebug'
 end

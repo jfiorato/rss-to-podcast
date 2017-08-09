@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170809111638) do
+ActiveRecord::Schema.define(version: 20170809123429) do
 
   create_table "feeds", force: :cascade do |t|
     t.integer  "user_id",    limit: 4,   null: false
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20170809111638) do
     t.text     "content",    limit: 65535
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.string   "audio_url",  limit: 255
   end
 
   add_index "posts", ["feed_id", "entry_id"], name: "index_posts_on_feed_id_and_entry_id", using: :btree

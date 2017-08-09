@@ -14,11 +14,13 @@ class FetchFeedJob < ActiveJob::Base
   def create_post(feed, entry)
     return if feed.posts.where(entry_id: entry.entry_id.to_s.strip).exists?
 
-    feed.posts.create({
+    post = feed.posts.create({
       entry_id: entry.entry_id.to_s.strip,
       title: entry.title.strip,
       content: process_content(entry)
     })
+
+    SynthesizeSpeechJob.perform_later(post.id)
   end
 
   def process_content(entry)
