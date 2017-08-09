@@ -3,5 +3,5 @@
   <td class="col-md-1 centered"><%= link_to 'Delete', feed_path(feed), method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure?' } %></td>
   <td class="middle"><%= link_to feed.url, feed.url, target: '_blank' %></td>
   <td class="col-md-1 middle centered"><%= link_to "View Posts", posts_path(feed_id: feed.id) %></td>
-  <td class="col-md-2 middle centered">Podcast URL</td>
+  <td class="col-md-2 middle centered"><%= link_to "Podcast URL", posts_path(feed_id: feed.id, format: :rss), target: '_blank' %></td>
 </tr>

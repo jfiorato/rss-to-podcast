@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :feeds
+  has_many    :feeds
 
-  validates :user_cookie, presence: true
+  validates   :user_cookie,   presence: true
 end
