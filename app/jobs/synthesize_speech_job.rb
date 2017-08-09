@@ -11,7 +11,12 @@ class SynthesizeSpeechJob < ActiveJob::Base
 
     synthesize_speech(post, temp_file)
 
-    post.update_attribute(:audio_url, upload_file(post, temp_file))
+    s3_object = upload_file(post, temp_file)
+
+    post.update_attributes(
+      audio_url: s3_object.public_url,
+      audio_file_size: s3_object.content_length
+    )
   ensure
     File.delete(temp_file) if temp_file
   end
@@ -34,6 +39,6 @@ class SynthesizeSpeechJob < ActiveJob::Base
               .object(object_path)
               .upload_file(temp_file)
 
-    "https://#{Figaro.env.s3_bucket_name}.s3.amazonaws.com/#{object_path}"
+    s3.bucket(Figaro.env.s3_bucket_name).object(object_path)
   end
 end
