@@ -8,13 +8,13 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def set_user!
-    if cookies.signed[:user_cookie].blank?
+    if cookies.signed[:user_cookie].blank? ||
+      !User.where(user_cookie: cookies.signed[:user_cookie]).exists?
       user_cookie = SecureRandom.uuid
       cookies.signed.permanent[:user_cookie] = user_cookie
       @current_user = User.create(user_cookie: user_cookie)
     else
       @current_user = User.find_by(user_cookie: cookies.signed[:user_cookie])
-      @current_user = User.create(user_cookie: user_cookie) if @current_user.nil?
     end
   end
 
