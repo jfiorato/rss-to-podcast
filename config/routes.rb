@@ -5,7 +5,11 @@ Rails.application.routes.draw do
       post :fetch
     end
   end
-  resources :posts, only: [:index]
+  resources :posts, only: [:index] do
+    collection do
+      get :podcast, defaults: { format: :rss }
+    end
+  end
 
   root to: 'feeds#index'
 end
