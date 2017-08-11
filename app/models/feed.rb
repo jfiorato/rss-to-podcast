@@ -4,4 +4,11 @@ class Feed < ActiveRecord::Base
 
   validates   :user,     presence: true
   validates   :url,      presence: true
+
+  after_destroy :cleanup_audio_files
+
+
+  def cleanup_audio_files
+    DestroyPostAudioJob.perform_later self.id
+  end
 end
